@@ -3,7 +3,6 @@ import {CartContext} from "../App"
 import {Link} from "react-router-dom"
 import  "./cart.css";
 
-//1 -создаем виджет
 
 function CartWidget() {
     const {cart,setCart} = useContext(CartContext); 
@@ -44,6 +43,4 @@ function Cart(){
 }
 
 export default Cart;
-export {CartWidget}; //понадобится в навигации
-
-//создали виджет, экспортировали в навигацию, дописали виджет, после пишем добавление в корзину на кнопках ADD
+export {CartWidget}; 

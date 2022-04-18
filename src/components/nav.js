@@ -14,7 +14,6 @@ function Nav() {
                     <Link to='/'> Home </Link>
                     <Link to='catalog'> Catalog </Link>
                     <Link to='about'> About </Link>
-                    {/* <Link to='cart'> Cart </Link> */}
                     <CartWidget/> 
                 </nav>
             </header>
@@ -25,4 +24,3 @@ function Nav() {
 
 export default Nav
 
-//в ходе создания корзины добавляем Cart widget в навігацію

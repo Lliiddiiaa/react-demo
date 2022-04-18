@@ -9,12 +9,12 @@ import Cart from "./components/Cart"
 import Footer from './components/Footer';
 import { ProductCard } from './components/ProductCard';
 
-export const ProductContext = React.createContext(); //10 
-export const CartContext = React.createContext(); //кор - 2 создаем контекст для корзины
+export const ProductContext = React.createContext(); 
+export const CartContext = React.createContext(); 
 
 function App() {
-  const [data,setData] = useState([]);// 10.1 создаем стейт
-  const [cart, setCart] = useState([]); //СОЗДАЕм  КОРЗИНУ
+  const [data,setData] = useState([]);
+  const [cart, setCart] = useState([]); 
 
     function getData(){
       if(data.length === 0) {
@@ -27,7 +27,7 @@ function App() {
               .then(resp => resp.json())
               .then(data => {
                   setData([...data])
-                  localStorage.setItem('catalog',JSON.stringify(data)); //добавлениа данных в локальное хранилище
+                  localStorage.setItem('catalog',JSON.stringify(data)); 
           });
         }
       }
@@ -47,7 +47,7 @@ function App() {
     getCart();
     getData();
 
-  function addCart(id) { //создаем корзину
+  function addCart(id) { 
     console.log(id)
     let value = cart;
     if(!cart.includes(id)) {
@@ -55,14 +55,14 @@ function App() {
       setCart(value)
     };
     localStorage.setItem('cart',JSON.stringify(value))
-    // setCart([...cart,id]);
-    // console.log(cart)
   }
   
   return (
-    //10.2 //кор - 3 оборачиваем в тег конктекста
+    
     <CartContext.Provider value = {{cart,setCart}}> 
+
       <ProductContext.Provider value = {{data,setData}}> 
+
         <React.Fragment>
           {/* <Nav/> */}
           <Routes>
@@ -71,14 +71,15 @@ function App() {
               <Route path='catalog/' element ={<Catalog add={addCart}/>}/> 
               <Route path='catalog/:productId' element ={<ProductCard add={addCart}/>}/>
               
-              
               <Route path='about' element ={<About/>}/>
               <Route path='cart' element ={<Cart/>}/>
             </Route>
           </Routes>
           <Footer/>
         </React.Fragment>
+
       </ProductContext.Provider>
+      
     </CartContext.Provider>
   );
 }
