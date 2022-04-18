@@ -1,0 +1,18 @@
+/* .cart-container {
+
+} */
+
+.cart-item {
+    display: flex;
+}
+
+
+.cart-image {
+    width: 100px;
+    height: 150px;
+}
+
+.cart-image img {
+    width: 100%;
+    max-height: 150px;
+}

@@ -4,7 +4,7 @@ import './catalog.css';
 import {ProductContext} from '../App';//10.4 в качестве value передаем объект
 
 
-function Catalog(){
+function Catalog(props){
 
     // const [data,setData] = useState([]); //2 
 
@@ -61,6 +61,7 @@ function Catalog(){
                price={product.price}
                image={product.image} //props
                 id={product.id} //7.2
+                add = {props.add} //для корзины
                />})
            }
        </div>

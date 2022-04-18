@@ -1,6 +1,7 @@
 import React from "react";
 import {Link, Outlet} from "react-router-dom";
 import './nav.css';
+import {CartWidget} from "./Cart"
 
 function Nav() {
     return (
@@ -13,7 +14,8 @@ function Nav() {
                     <Link to='/'> Home </Link>
                     <Link to='catalog'> Catalog </Link>
                     <Link to='about'> About </Link>
-                    <Link to='cart'> Cart </Link>
+                    {/* <Link to='cart'> Cart </Link> */}
+                    <CartWidget/> 
                 </nav>
             </header>
             <Outlet/>
@@ -22,3 +24,5 @@ function Nav() {
 }
 
 export default Nav
+
+//в ходе создания корзины добавляем Cart widget в навігацію

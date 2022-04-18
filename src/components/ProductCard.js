@@ -2,11 +2,15 @@ import React, { useContext } from "react";
 import './productCard.css';
 import {Link, useParams} from 'react-router-dom'; //7.1
 import {ProductContext} from "../App"
+import {CartContext} from "../App" //вешаем плюсик при добавлнии товара в корзину
 
 //пишем две функции, первая - сам card, вторая превью
 
-function ProductCard() {
+//в app.js в качестве пропсов прокинута кнопка 
+
+function ProductCard(props) {
     const {data,setData} = useContext(ProductContext); //КОНТЕКСТ - К
+    const {cart,setCart} = useContext(CartContext);
     const id = useParams() //через id можно все отрисовать
     //создадим то, что нам нужно отрисовать
     const product = data.find(elem => elem.id === +id.productId);
@@ -21,7 +25,7 @@ function ProductCard() {
                 <h2>{product.title}</h2>
                 <p>{product.price}</p>
                 <p>{product.description}</p>
-                <button> Add </button>
+                <button onClick={() => props.add(+id.productId)}> Add {cart.includes(+id.productId) ? '-' : '+'}</button>
             </div>
         )
 }
@@ -37,7 +41,7 @@ function ProductPreview(props) {
             </div>
             <Link to={`${id}`}><h2> {title} </h2></Link>
             <p>{price}</p>
-            <button> Add </button>
+            <button onClick={() => props.add(+id.productId)}> Add {cart.includes(+id) ? '-' : '+'}</button>
             {/* <Outlet/> */}
         </div>
     )
